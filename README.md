@@ -1,5 +1,9 @@
 # Team Agreement
 
+## Team
+
+Marquesa Asmussen, Steve Ngo, Eddie Ponce, Katy Roffe, Cameron Walden
+
 ## Cooperation Plan
 
 _Every person on your team is an asset. This is your chance to discover the hidden strengths and areas for growth for each team member._
