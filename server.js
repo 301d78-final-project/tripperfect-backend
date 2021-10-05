@@ -64,7 +64,21 @@ app.post('/events', async (req, res) => {
     }
 })
 
-// app.delete()
+app.delete('/events/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+
+        const event = await EventModel.find({_id: id})
+
+        if (!event) {
+            res.status(400).send('error inside delete');
+        }
+        await EventModel.findByIdAndDelete(id);
+        res.send('success from delete');
+    } catch (error) {
+        res.status(400).send('error from delete catch');
+    }
+})
 
 
 app.listen(PORT, () => console.log(`screaming into the void of ${PORT}`));
