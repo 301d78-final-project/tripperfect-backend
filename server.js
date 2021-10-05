@@ -15,6 +15,7 @@ app.use(express.json());
 const PORT = process.env.PORT || 3001;
 const DATABASE_URI = process.env.DATABASE_URI
 const MAPBOX_API_KEY = process.env.MAPBOX_API_KEY
+const TM_API_KEY = process.env.TM_API_KEY
 
 //initialize mongoose
 
@@ -28,7 +29,7 @@ app.get('/test', (req, res) => {
     res.send('test request received')
 })
 
-app.get('/events', async (req, res) => {
+app.get('/location', async (req, res) => {
     const location = req.query.location;
     console.log(location)
     const mapboxAPI = `https://api.mapbox.com/geocoding/v5/mapbox.places/${location}.json?access_token=${MAPBOX_API_KEY}`
@@ -40,12 +41,26 @@ app.get('/events', async (req, res) => {
     res.send(locationResponse.data)
     }
     catch (error) {
-        res.status(400).send('whoops from inside get');
+        res.status(400).send('whoops from inside get location');
     }
-   
 })
 
-app.post('/events', async (req, res) => {
+app.get('/events', async (req, res) => {
+    const city = req.query.city;
+    const startDateTime = req.query.startDateTime
+    const tmAPI = `https://app.ticketmaster.com/discovery/v2/events.json?city=${city}&startDateTime=${startDateTime}&size=10&apikey=${TM_API_KEY}`
+
+    try {
+        const eventResponse = await axios.get(tmAPI);
+        res.send(eventResponse.data)
+    }
+    catch (error) {
+        res.status(400).send('error from inside get events')
+    }
+})
+
+
+app.post('/favorites', async (req, res) => {
 
     try {
         const mapInfo = req.body;
@@ -64,7 +79,7 @@ app.post('/events', async (req, res) => {
     }
 })
 
-app.delete('/events/:id', async (req, res) => {
+app.delete('/favorites/:id', async (req, res) => {
     try {
         const id = req.params.id;
 
