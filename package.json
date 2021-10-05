@@ -1,0 +1,27 @@
+{
+  "name": "tripperfect-backend",
+  "version": "1.0.0",
+  "description": "## Team",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/301d78-final-project/tripperfect-backend.git"
+  },
+  "author": "Team Apple",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/301d78-final-project/tripperfect-backend/issues"
+  },
+  "homepage": "https://github.com/301d78-final-project/tripperfect-backend#readme",
+  "dependencies": {
+    "axios": "^0.22.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.8",
+    "nodemon": "^2.0.13"
+  }
+}
