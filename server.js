@@ -21,6 +21,8 @@ const MAPBOX_API_KEY = process.env.MAPBOX_API_KEY
 const mongoose = require('mongoose');
 mongoose.connect(DATABASE_URI);
 
+const EventModel = require('./models/eventschema.js');
+
 //routes
 app.get('/test', (req, res) => {
     res.send('test request received')
@@ -48,7 +50,7 @@ app.post('/events', async (req, res) => {
     try {
         const mapInfo = req.body;
 
-        const newEvent = await Event.create({
+        const newEvent = await EventModel.create({
             title: mapInfo.title,
             description: mapInfo.description,
             location: mapInfo.location,
