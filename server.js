@@ -59,6 +59,12 @@ app.get('/events', async (req, res) => {
     }
 })
 
+app.get('/favorites/:id', async (req, res) => {
+    const id = req.params.id;
+    const events = await EventModel.find({ _id: id });
+    res.status(200).json(items[0]);
+})
+
 
 app.post('/favorites', async (req, res) => {
 
