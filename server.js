@@ -78,7 +78,6 @@ app.post('/favorites', async (req, res) => {
             title: mapInfo.title,
             description: mapInfo.description,
             location: mapInfo.location,
-            formatted_address: mapInfo.formatted_address,
             date: mapInfo.date,
             email: mapInfo.email,
         });
