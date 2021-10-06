@@ -59,10 +59,13 @@ app.get('/events', async (req, res) => {
     }
 })
 
-app.get('/favorites/:id', async (req, res) => {
-    const id = req.params.id;
-    const events = await EventModel.find({ _id: id });
-    res.status(200).json(items[0]);
+app.get('/favorites', async (req, res) => {
+    const email = req.query.email;
+    console.log(email, "CHECK OUT EMAIL")
+    //look for user email or username
+    const events = await EventModel.find({email: email});
+    res.status(200).json(events);
+    console.log(events, "CHECK OUT EVENTS")
 })
 
 
@@ -75,7 +78,6 @@ app.post('/favorites', async (req, res) => {
             title: mapInfo.title,
             description: mapInfo.description,
             location: mapInfo.location,
-            formatted_address: mapInfo.formatted_address,
             date: mapInfo.date,
             email: mapInfo.email,
         });

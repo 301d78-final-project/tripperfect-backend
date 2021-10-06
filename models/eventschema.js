@@ -8,7 +8,6 @@ const eventSchema = new Schema ({
     title: {type: String},
     description: {type: String},
     location:{type: Array},
-    formatted_address:{type: String},
     date: {type: String},
     email: {type: String},
 })
