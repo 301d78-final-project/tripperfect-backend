@@ -6,6 +6,8 @@ const MAPBOX_API_KEY = process.env.MAPBOX_API_KEY
 const TM_API_KEY = process.env.TM_API_KEY
 const axios = require('axios')
 
+const Event = {};
+
 Event.getLocation = async (req, res) => {
   const location = req.query.location;
   const mapboxAPI = `https://api.mapbox.com/geocoding/v5/mapbox.places/${location}.json?access_token=${MAPBOX_API_KEY}`
